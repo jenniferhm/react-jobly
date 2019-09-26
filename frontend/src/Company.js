@@ -3,7 +3,7 @@ import JoblyApi from "./JoblyApi";
 import JobCard from "./JobCard";
 import uuid from "uuid/v4";
 
-class Company extends React.Component {
+class Company extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
