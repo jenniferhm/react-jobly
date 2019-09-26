@@ -43,7 +43,8 @@ class SignUpForm extends React.Component {
         <input id="lastName" name="lastName" value={this.state.lastName} onChange={this.handleChange}></input>
         <label htmlFor="email">Email:</label>
         <input id="email" name="email" value={this.state.email} onChange={this.handleChange}></input>
-        <button>Sign Up!</button>
+        <button>Sign Up!</button><br />
+        {/* <button onClick={}>Login</button> */}
       </form>
     )
   }
