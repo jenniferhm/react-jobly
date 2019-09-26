@@ -1,14 +1,17 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
 
-class Home extends React.Component {
+class Home extends React.PureComponent {
   render() {
-    const loggedIn = true; //this.props.loggedIn needs to be passed
-    //also need to pass in a handlelogin prop below
+    console.log("THIS IS PROPS IN HOME", this.props.loggedInUser)
+
     return (
       <div className="Home">
         <h1>Jobly</h1>
         <p>All the jobs in one convenient place.</p>
-        {loggedIn ? <h3>Welcome Back!</h3> : <button onClick={this.props.handleLogin}>Login</button>}
+        {this.props.loggedInUser
+          ? <h3>Welcome Back!</h3>
+          : <Link to="/login"><button>Login</button></Link>}
       </div>
     )
   }

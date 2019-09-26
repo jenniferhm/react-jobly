@@ -24,15 +24,16 @@ class Jobs extends React.Component {
   }
 
   render() {
-    let jobslist = this.state.jobs.map(j => (
+    let jobsList = this.state.jobs.map(j => (
       <div key={uuid()}>
-        <JobCard jobData={j} />
+        <JobCard job={j} />
       </div>
     ));
+
     return (
       <div className="Jobs">
         <Search search={this.jobSearch} />
-        {jobslist}
+        {jobsList}
       </div>
     )
   }

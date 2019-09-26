@@ -3,7 +3,7 @@ import JoblyApi from "./JoblyApi";
 import JobCard from "./JobCard";
 import uuid from "uuid/v4";
 
-class Company extends React.PureComponent {
+class Company extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,7 +19,7 @@ class Company extends React.PureComponent {
   // }
 
   async componentDidMount() {
-    let handle = this.props.match.params.company;
+    const handle = this.props.match.params.company;
     let { name, description, jobs } = await JoblyApi.getCompany(handle);
     this.setState({name, description, jobs});
   }
@@ -27,7 +27,7 @@ class Company extends React.PureComponent {
   render() {
     const { name, description, jobs } = this.state;
 
-    let jobsList = jobs.map(j => <JobCard key={uuid()} jobData={j} />)
+    let jobsList = jobs.map(j => <JobCard key={uuid()} job={j} />)
 
     return (
       <div className="Company">

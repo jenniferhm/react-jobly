@@ -36,7 +36,7 @@ class SignUpForm extends React.Component {
         <label htmlFor="username">Username:</label>
         <input id="username" name="username" value={this.state.username} onChange={this.handleChange}></input>
         <label htmlFor="password">Password:</label>
-        <input id="password" name="password" value={this.state.password}></input>
+        <input id="password" name="password" value={this.state.password} onChange={this.handleChange}></input>
         <label htmlFor="firstName">First Name:</label>
         <input id="firstName" name="firstName" value={this.state.firstName} onChange={this.handleChange}></input>
         <label htmlFor="lastName">Last Name:</label>

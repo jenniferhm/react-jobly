@@ -15,19 +15,19 @@ class Companies extends React.Component {
   }
 
   async componentDidMount() {
-    let companies = await JoblyApi.getAllCompanies();
+    const companies = await JoblyApi.getAllCompanies();
     this.setState({ companies });
   }
 
   async companySearch(query) {
-    let companies = await JoblyApi.getSearchedCompanies(query);
+    const companies = await JoblyApi.getSearchedCompanies(query);
     this.setState({ companies });
   }
 
   render() {
     let companiesList = this.state.companies.map(c => (
       <div key={uuid()}>
-        <Link to={`companies/${c.handle}`}><CompanyCard compData={c} /></Link>
+        <Link to={`companies/${c.handle}`}><CompanyCard company={c} /></Link>
       </div>
     ));
     return (

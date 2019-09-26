@@ -17,7 +17,7 @@ class Routes extends React.Component {
           <Company {...rtProps} />
          )} />
         <Route exact path="/jobs" render={() => <Jobs />} />
-        <Route exact path="/login" render={() => <Login />} />
+        <Route exact path="/login" render={rtProps => <Login {...rtProps} />} />
         <Route exact path="/profile" render={() => <Profile />} />
         <Redirect to="/" />
       </Switch>

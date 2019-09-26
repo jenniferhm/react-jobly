@@ -1,4 +1,5 @@
 import axios from "axios";
+import {decode} from "jwt-decode";
 
 class JoblyApi {
   static async request(endpoint, paramsOrData = {}, verb = "get") {
@@ -53,7 +54,7 @@ class JoblyApi {
   }
 
   static async login(username, password) {
-    let res = await this.request("auth/login", { username, password }, "post");
+    let res = await this.request("login", { username, password }, "post");
     return res.token;
   }
 

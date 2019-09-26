@@ -5,7 +5,7 @@ class Search extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      searchQuery: ""
+      searchTerm: ""
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -13,8 +13,8 @@ class Search extends React.PureComponent {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.props.search(this.state.searchQuery);
-    this.setState({ searchQuery: "" });
+    this.props.search(this.state.searchTerm);
+    this.setState({ searchTerm: "" });
   }
 
   handleChange(evt) {
@@ -26,9 +26,9 @@ class Search extends React.PureComponent {
       <form className="form-inline" onSubmit={this.handleSubmit}>
         <input
           className="form-control form-control-lg"
-          name="searchQuery"
+          name="searchTerm"
           placeholder="Enter search term..."
-          value={this.state.searchQuery}
+          value={this.state.searchTerm}
           onChange={this.handleChange} />
         <button type="submit" className="btn btn-lg btn-primary">Search</button>
       </form>

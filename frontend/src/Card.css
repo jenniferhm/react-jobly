@@ -1,5 +1,6 @@
 .Card {
-  margin: auto;
+  margin: 10px auto;
   width: 60rem;
   border: 1px solid black;
+  display: flex;
 }
