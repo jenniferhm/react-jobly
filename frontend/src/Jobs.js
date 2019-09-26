@@ -10,22 +10,28 @@ class Jobs extends React.Component {
     this.state = {
       jobs: []
     }
+    this.jobSearch = this.jobSearch.bind(this);
   }
 
   async componentDidMount() {
-    let jobsList = await JoblyApi.getAllJobs();
-    this.setState({ jobs: jobsList });
+    let jobs = await JoblyApi.getAllJobs();
+    this.setState({ jobs });
+  }
+
+  async jobSearch(query) {
+    let jobs = await JoblyApi.getSearchedJobs(query);
+    this.setState({ jobs });
   }
 
   render() {
     let jobslist = this.state.jobs.map(j => (
-      <div>
-        <JobCard key={uuid()} jobData={j} />
+      <div key={uuid()}>
+        <JobCard jobData={j} />
       </div>
     ));
     return (
       <div className="Jobs">
-        <Search />
+        <Search search={this.jobSearch} />
         {jobslist}
       </div>
     )
