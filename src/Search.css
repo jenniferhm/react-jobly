@@ -1,0 +1,12 @@
+.form-inline {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+input {
+  display: inline-block;
+  justify-items: center;
+}
