@@ -11,6 +11,7 @@ class Jobs extends React.Component {
       jobs: []
     }
     this.jobSearch = this.jobSearch.bind(this);
+    this.handleApply = this.handleApply.bind(this);
   }
 
   async componentDidMount() {
@@ -23,10 +24,21 @@ class Jobs extends React.Component {
     this.setState({ jobs });
   }
 
+  async handleApply(id) {
+    let message = await JoblyApi.apply(id);
+    this.setState(st => ({
+      jobs: st.jobs.map(job => (
+        job.id === id
+        ? {...job, state: message}
+        :job
+      ))
+    }))
+  }
+
   render() {
     let jobsList = this.state.jobs.map(j => (
       <div key={uuid()}>
-        <JobCard job={j} />
+        <JobCard job={j} handleApply={this.handleApply} />
       </div>
     ));
 
