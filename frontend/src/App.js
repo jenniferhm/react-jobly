@@ -24,8 +24,7 @@ class App extends React.Component {
   async loadCurrentUser() {
     const token = localStorage.getItem("_token");
     const response = await JoblyApi.getUser(token);
-
-    this.setState({ currentUser: response.data })
+    this.setState({ currentUser: response })
   }
 
   handleLogOut() {

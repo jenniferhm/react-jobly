@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -27,18 +27,20 @@ class LoginForm extends React.Component {
   render() {
     return (
       <form className="LoginForm" onSubmit={this.handleSubmit}>
-        <label htmlFor="username">Username:</label>
-        <input type="text"
-          id="username"
-          name="username"
-          value={this.state.username}
-          onChange={this.handleChange} />
-        <label htmlFor="password">Password:</label>
-        <input type="password"
-          id="password"
-          name="password"
-          value={this.state.password}
-          onChange={this.handleChange} />
+        <div><label htmlFor="username">Username:</label>
+          <input type="text"
+            id="username"
+            name="username"
+            value={this.state.username}
+            onChange={this.handleChange} />
+        </div>
+        <div><label htmlFor="password">Password:</label>
+          <input type="password"
+            id="password"
+            name="password"
+            value={this.state.password}
+            onChange={this.handleChange} />
+        </div>
         <button>Login In</button><br />
       </form>
     )

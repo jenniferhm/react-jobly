@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 class SignUpForm extends React.Component {
   constructor(props) {
@@ -33,36 +33,41 @@ class SignUpForm extends React.Component {
   render() {
     return (
       <form className="SignUpForm" onSubmit={this.handleSubmit}>
-        <label htmlFor="username">Username:</label>
-        <input type="text"
-          id="username"
-          name="username"
-          value={this.state.username}
-          onChange={this.handleChange} />
-        <label htmlFor="password">Password:</label>
-        <input type="password"
-          id="password"
-          name="password"
-          value={this.state.password}
-          onChange={this.handleChange} />
-        <label htmlFor="first_name">First Name:</label>
-        <input type="text"
-          id="first_name"
-          name="first_name"
-          value={this.state.first_name}
-          onChange={this.handleChange} />
-        <label htmlFor="last_name">Last Name:</label>
-        <input type="text"
-          id="last_name"
-          name="last_name"
-          value={this.state.last_name}
-          onChange={this.handleChange} />
-        <label htmlFor="email">Email:</label>
-        <input type="text"
-          id="email"
-          name="email"
-          value={this.state.email}
-          onChange={this.handleChange} />
+        <div><label htmlFor="username">Username:</label>
+          <input type="text"
+            id="username"
+            name="username"
+            value={this.state.username}
+            onChange={this.handleChange} />
+        </div>
+        <div><label htmlFor="password">Password:</label>
+          <input type="password"
+            id="password"
+            name="password"
+            value={this.state.password}
+            onChange={this.handleChange} />
+        </div>
+        <div><label htmlFor="first_name">First Name:</label>
+          <input type="text"
+            id="first_name"
+            name="first_name"
+            value={this.state.first_name}
+            onChange={this.handleChange} />
+        </div>
+        <div><label htmlFor="last_name">Last Name:</label>
+          <input type="text"
+            id="last_name"
+            name="last_name"
+            value={this.state.last_name}
+            onChange={this.handleChange} />
+        </div>
+        <div><label htmlFor="email">Email:</label>
+          <input type="text"
+            id="email"
+            name="email"
+            value={this.state.email}
+            onChange={this.handleChange} />
+        </div>
         <button>Sign Up!</button><br />
       </form>
     )

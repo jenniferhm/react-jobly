@@ -69,9 +69,10 @@ class JoblyApi {
     return res.user;
   }
 
-  static async editUser(username, formBody) {
-    let res = await this.request(`users/${username}`, { username, formBody }, "patch");
-    return res.user;
+  static async editUser(username, profileUpdates) {
+    if (!profileUpdates.photo_url) profileUpdates.photo_url = "https://www.flaticon.com/free-icon/user_181549#term=profile&page=1&position=9"
+    await this.request(`users/${username}`, profileUpdates, "patch");
+    return "SUCCESS"
   }
 }
 

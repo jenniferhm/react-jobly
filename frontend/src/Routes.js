@@ -17,8 +17,8 @@ class Routes extends React.Component {
           <Company {...rtProps} />
          )} />
         <Route exact path="/jobs" render={() => <Jobs />} />
-        <Route exact path="/login" render={rtProps => <Login {...rtProps} loadCurrentUser={this.props.loadCurrentUser} currentUser={this.props.currentUser} />} />
-        <Route exact path="/profile" render={() => <Profile />} />
+        <Route exact path="/login" render={rtProps => <Login {...rtProps} loadCurrentUser={this.props.loadCurrentUser} />} />
+        <Route exact path="/profile" render={rtProps => <Profile {...rtProps} loadCurrentUser={this.props.loadCurrentUser}  currentUser={this.props.currentUser} />} />
         <Redirect to="/" />
       </Switch>
     )
