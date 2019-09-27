@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+import PrivateRoute from "./PrivateRoute";
 import Home from "./Home";
 import Companies from "./Companies";
 import Company from "./Company";
@@ -9,16 +10,17 @@ import Profile from "./Profile";
 
 class Routes extends React.Component {
   render() {
+    let loggedIn = this.props.currentUser;
     return (
       <Switch>
-        <Route exact path="/" render={() => <Home />} />
-        <Route exact path="/companies" render={() => <Companies />} />
-        <Route exact path="/companies/:company" render={rtProps => (
-          <Company {...rtProps} />
-         )} />
-        <Route exact path="/jobs" render={() => <Jobs />} />
         <Route exact path="/login" render={rtProps => <Login {...rtProps} loadCurrentUser={this.props.loadCurrentUser} />} />
-        <Route exact path="/profile" render={rtProps => <Profile {...rtProps} loadCurrentUser={this.props.loadCurrentUser}  currentUser={this.props.currentUser} />} />
+        <PrivateRoute loggedIn={loggedIn} exact path="/companies" render={() => <Companies />} />
+        <PrivateRoute loggedIn={loggedIn} exact path="/companies/:company" render={rtProps => (
+          <Company {...rtProps} />
+          )} />
+        <PrivateRoute loggedIn={loggedIn} exact path="/jobs" render={() => <Jobs />} />
+        <PrivateRoute loggedIn={loggedIn} exact path="/profile" render={rtProps => <Profile {...rtProps} loadCurrentUser={this.props.loadCurrentUser}  currentUser={this.props.currentUser} />} />
+        <Route exact path="/" render={() => <Home />} />
         <Redirect to="/" />
       </Switch>
     )

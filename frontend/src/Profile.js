@@ -81,7 +81,7 @@ class Profile extends React.Component {
             id="password"
             name="password"
             value={this.state.password}
-            onChange={this.handleChange} />
+            onChange={this.handleChange} required/>
         </div>
         <button>Save Changes</button>
       </form>

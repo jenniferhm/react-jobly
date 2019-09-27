@@ -10,7 +10,7 @@ class Nav extends React.Component {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          {localStorage.getItem("_token")
+          {this.props.currentUser
             ? (<ul className="navbar-nav ml-auto">
                 <li className="nav-item mr-4"><NavLink exact to="/companies">Companies</NavLink></li>
                 <li className="nav-item mr-4"><NavLink exact to="/jobs">Jobs</NavLink></li>

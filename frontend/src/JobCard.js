@@ -10,7 +10,7 @@ class JobCard extends React.PureComponent {
           <h4 className="card-title">{title}</h4>
           <p className="card-text">Salary: {salary}</p>
           <p className="card-text">Equity: {equity}</p>
-          <button type="button" className="btn btn-danger float-right">APPLY</button>
+          <button type="button" onClick={this.props.handleApply} className="btn btn-danger float-right">APPLY</button>
         </div>
       </div>
     )

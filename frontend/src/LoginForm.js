@@ -17,11 +17,11 @@ class LoginForm extends React.Component {
     this.setState({
       username: "",
       password: ""
-    })
+    });
   }
 
   handleChange(evt) {
-    this.setState({ [evt.target.name]: evt.target.value })
+    this.setState({ [evt.target.name]: evt.target.value });
   }
 
   render() {
@@ -41,7 +41,7 @@ class LoginForm extends React.Component {
             value={this.state.password}
             onChange={this.handleChange} />
         </div>
-        <button>Login In</button><br />
+        <button>Login</button><br />
       </form>
     )
   }

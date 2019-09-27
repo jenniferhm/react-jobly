@@ -8,15 +8,15 @@ class Login extends React.PureComponent {
     super(props);
     this.state = {
       formShown: "login"
-    }
+    };
+
     this.toggleFormShown = this.toggleFormShown.bind(this);
     this.loginUser = this.loginUser.bind(this);
     this.registerUser = this.registerUser.bind(this);
-
   }
 
   toggleFormShown(formName) {
-    this.setState({ formShown: formName })
+    this.setState({ formShown: formName });
   }
 
   async loginUser(data) {

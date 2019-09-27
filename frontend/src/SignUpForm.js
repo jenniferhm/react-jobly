@@ -9,7 +9,7 @@ class SignUpForm extends React.Component {
       first_name: "",
       last_name: "",
       email: ""
-    }
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -23,11 +23,11 @@ class SignUpForm extends React.Component {
       first_name: "",
       last_name: "",
       email: ""
-    })
+    });
   }
 
   handleChange(evt) {
-    this.setState({ [evt.target.name]: evt.target.value })
+    this.setState({ [evt.target.name]: evt.target.value });
   }
 
   render() {
@@ -47,9 +47,9 @@ class SignUpForm extends React.Component {
             value={this.state.password}
             onChange={this.handleChange} />
         </div>
-        <div><label htmlFor="first_name">First Name:</label>
+        <div><label htmlFor="first-name">First Name:</label>
           <input type="text"
-            id="first_name"
+            id="first-name"
             name="first_name"
             value={this.state.first_name}
             onChange={this.handleChange} />
