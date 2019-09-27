@@ -1,4 +1,5 @@
 import React from 'react';
+import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
 import JoblyApi from './JoblyApi';
 
@@ -6,54 +7,45 @@ class Login extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      password: "",
-      // first_name: "",
-      // last_name: "",
-      // email: "",
       formShown: "login"
     }
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSignUp = this.handleSignUp.bind(this);
+    this.toggleFormShown = this.toggleFormShown.bind(this);
+    this.loginUser = this.loginUser.bind(this);
+    this.registerUser = this.registerUser.bind(this);
+
   }
 
-  async handleSubmit(evt) {
-    evt.preventDefault();
-    const token = await JoblyApi.login(this.state.username, this.state.password);
+  toggleFormShown(formName) {
+    this.setState({ formShown: formName })
+  }
+
+  async loginUser(data) {
+    const token = await JoblyApi.login(data);
     localStorage.setItem('_token', token);
+
     await this.props.loadCurrentUser();
     this.props.history.push("/jobs");
   }
 
-  handleChange(evt) {
-    this.setState({ [evt.target.name]: evt.target.value })
+  async registerUser(data) {
+    const token = await JoblyApi.register(data);
+    localStorage.setItem('_token', token);
+
+    await this.props.loadCurrentUser();
+    this.props.history.push("/jobs");
   }
 
-  handleSignUp(evt) {
-    this.setState({signingUp: !this.state.signingUp});
+  render() {
+    return (
+      <div className="login-signup">
+        <button onClick={() => this.toggleFormShown("login")}>Login</button>
+        <button onClick={() => this.toggleFormShown("signup")}>Sign Up</button>
+        {this.state.formShown === "login"
+          ? <LoginForm loginUser={this.loginUser} />
+          : <SignUpForm registerUser={this.registerUser} />}
+      </div>
+    )
   }
-
-  toggleFormShown() {
-    this.setState({formShown: !this.state.formShown})
-  }
-
-render() {
-  return (
-    <div>
-      {this.state.formShown === "login"
-        ? (<form className="Login" onSubmit={this.handleSubmit}>
-          <label htmlFor="username">Username:</label>
-          <input type="text" id="username" name="username" value={this.state.username} onChange={this.handleChange}></input>
-          <label htmlFor="password">Password:</label>
-          <input type="password" id="password" name="password" value={this.state.password} onChange={this.handleChange}></input>
-          <button>Submit</button><br />
-          <button onClick={this.handleSignUp} > {console.log("I GOT CLICKED")}Sign Up</button>
-        </form>)
-        : < SignUpForm />}
-    </div>
-  )
-}
 }
 
 export default Login;

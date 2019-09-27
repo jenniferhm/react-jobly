@@ -28,8 +28,6 @@ class App extends React.Component {
     this.setState({ currentUser: response.data })
   }
 
-
-
   handleLogOut() {
     localStorage.removeItem("_token");
     this.setState({currentUser: null});

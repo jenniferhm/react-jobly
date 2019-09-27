@@ -7,7 +7,7 @@ class JoblyApi {
     //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc" +
     //   "3RpbmciLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTU1MzcwMzE1M30." +
     //   "COmFETEsTxN_VfIlgIKw0bYJLkvbRQNgO1XCSE8NZ0U");
-      paramsOrData._token = localStorage.getItem("_token");
+    paramsOrData._token = localStorage.getItem("_token");
     console.debug("API Call:", endpoint, paramsOrData, verb);
 
     try {
@@ -53,8 +53,13 @@ class JoblyApi {
     return res.jobs;
   }
 
-  static async login(username, password) {
-    let res = await this.request("login", { username, password }, "post");
+  static async login(data) {
+    let res = await this.request("login", data, "post");
+    return res.token;
+  }
+
+  static async register(data) {
+    let res = await this.request("users", data, "post");
     return res.token;
   }
 

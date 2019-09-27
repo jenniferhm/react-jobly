@@ -6,8 +6,8 @@ class SignUpForm extends React.Component {
     this.state = {
       username: "",
       password: "",
-      firstName: "",
-      lastName: "",
+      first_name: "",
+      last_name: "",
       email: ""
     }
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,35 +16,54 @@ class SignUpForm extends React.Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.props.addUser(this.state);
+    this.props.registerUser(this.state);
     this.setState({
       username: "",
       password: "",
-      firstName: "",
-      lastName: "",
+      first_name: "",
+      last_name: "",
       email: ""
     })
   }
 
   handleChange(evt) {
-    this.setState({[evt.target.name]: evt.target.value})
+    this.setState({ [evt.target.name]: evt.target.value })
   }
 
   render() {
     return (
       <form className="SignUpForm" onSubmit={this.handleSubmit}>
         <label htmlFor="username">Username:</label>
-        <input id="username" name="username" value={this.state.username} onChange={this.handleChange}></input>
+        <input type="text"
+          id="username"
+          name="username"
+          value={this.state.username}
+          onChange={this.handleChange} />
         <label htmlFor="password">Password:</label>
-        <input id="password" name="password" value={this.state.password} onChange={this.handleChange}></input>
-        <label htmlFor="firstName">First Name:</label>
-        <input id="firstName" name="firstName" value={this.state.firstName} onChange={this.handleChange}></input>
-        <label htmlFor="lastName">Last Name:</label>
-        <input id="lastName" name="lastName" value={this.state.lastName} onChange={this.handleChange}></input>
+        <input type="password"
+          id="password"
+          name="password"
+          value={this.state.password}
+          onChange={this.handleChange} />
+        <label htmlFor="first_name">First Name:</label>
+        <input type="text"
+          id="first_name"
+          name="first_name"
+          value={this.state.first_name}
+          onChange={this.handleChange} />
+        <label htmlFor="last_name">Last Name:</label>
+        <input type="text"
+          id="last_name"
+          name="last_name"
+          value={this.state.last_name}
+          onChange={this.handleChange} />
         <label htmlFor="email">Email:</label>
-        <input id="email" name="email" value={this.state.email} onChange={this.handleChange}></input>
+        <input type="text"
+          id="email"
+          name="email"
+          value={this.state.email}
+          onChange={this.handleChange} />
         <button>Sign Up!</button><br />
-        {/* <button onClick={}>Login</button> */}
       </form>
     )
   }
