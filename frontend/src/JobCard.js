@@ -8,11 +8,13 @@ class JobCard extends React.PureComponent {
   }
 
   handleApply(evt) {
-    this.props.handleApply(this.props.job.id);
+    this.props.applyForJob(this.props.job.id);
+    console.log("WE GOT TO APPLY", this.props.job.id)
   }
 
   render() {
     const { title, salary, equity, state } = this.props.job;
+    console.log("THIS IS STATE", state)
     return (
       <div className="Card">
         <div className="card-body">

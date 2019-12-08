@@ -16,9 +16,9 @@ class Routes extends React.Component {
         <Route exact path="/login" render={rtProps => <Login {...rtProps} loadCurrentUser={this.props.loadCurrentUser} />} />
         <PrivateRoute loggedIn={loggedIn} exact path="/companies" render={() => <Companies />} />
         <PrivateRoute loggedIn={loggedIn} exact path="/companies/:company" render={rtProps => (
-          <Company {...rtProps} />
+          <Company {...rtProps} applyForJob={this.props.applyForJob} />
           )} />
-        <PrivateRoute loggedIn={loggedIn} exact path="/jobs" render={() => <Jobs />} />
+        <PrivateRoute loggedIn={loggedIn} exact path="/jobs" render={() => <Jobs applyForJob={this.props.applyForJob} />} />
         <PrivateRoute loggedIn={loggedIn} exact path="/profile" render={rtProps => <Profile {...rtProps} loadCurrentUser={this.props.loadCurrentUser}  currentUser={this.props.currentUser} />} />
         <Route exact path="/" render={() => <Home />} />
         <Redirect to="/" />

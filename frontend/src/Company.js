@@ -11,12 +11,7 @@ class Company extends React.Component {
       description: "",
       jobs: []
     }
-    // this.handleApply = this.handleApply.bind(this);
   }
-
-  // handleApply(evt) {
-  //   this.props.apply();
-  // }
 
   async componentDidMount() {
     const handle = this.props.match.params.company;
@@ -27,7 +22,11 @@ class Company extends React.Component {
   render() {
     const { name, description, jobs } = this.state;
 
-    let jobsList = jobs.map(j => <JobCard key={uuid()} job={j} />)
+    let jobsList = jobs.map(j => (
+      <div key={uuid()}>
+        <JobCard job={j} applyForJob={this.props.applyForJob} />
+      </div>
+    ));
 
     return (
       <div className="Company">

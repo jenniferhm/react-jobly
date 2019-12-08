@@ -11,7 +11,8 @@ class Profile extends React.Component {
       email: email || "",
       photo_url: photo_url || "",
       username: username || "",
-      password: ""
+      password: "",
+      errors: []
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -26,9 +27,13 @@ class Profile extends React.Component {
       photo_url: this.state.photo_url,
       password: this.state.password
     }
-    await JoblyApi.editUser(this.state.username, profileUpdates);
+    try {
+      await JoblyApi.editUser(this.state.username, profileUpdates);
+      await this.props.loadCurrentUser();
+    } catch (errors) {
+      this.setState({ errors })
+    }
 
-    await this.props.loadCurrentUser();
     this.props.history.push("/");
   }
 
@@ -81,7 +86,7 @@ class Profile extends React.Component {
             id="password"
             name="password"
             value={this.state.password}
-            onChange={this.handleChange} required/>
+            onChange={this.handleChange} required />
         </div>
         <button>Save Changes</button>
       </form>

@@ -7,7 +7,8 @@ class Login extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      formShown: "login"
+      formShown: "login",
+      errors: []
     };
 
     this.toggleFormShown = this.toggleFormShown.bind(this);
@@ -20,15 +21,24 @@ class Login extends React.PureComponent {
   }
 
   async loginUser(data) {
-    const token = await JoblyApi.login(data);
+    let token;
+    try {
+      token = await JoblyApi.login(data);
+    } catch (errors) {
+      return this.setState({ errors });
+    }
     localStorage.setItem('_token', token);
-
     await this.props.loadCurrentUser();
     this.props.history.push("/jobs");
   }
 
   async registerUser(data) {
-    const token = await JoblyApi.register(data);
+    let token;
+    try {
+      token = await JoblyApi.register(data);
+    } catch (errors) {
+      return this.setState({ errors });
+    }
     localStorage.setItem('_token', token);
 
     await this.props.loadCurrentUser();
@@ -41,8 +51,11 @@ class Login extends React.PureComponent {
         <button onClick={() => this.toggleFormShown("login")}>Login</button>
         <button onClick={() => this.toggleFormShown("signup")}>Sign Up</button>
         {this.state.formShown === "login"
-          ? <LoginForm loginUser={this.loginUser} />
+          ? <LoginForm loginUser={this.loginUser} errors={this.state.errors} />
           : <SignUpForm registerUser={this.registerUser} />}
+        {this.state.errors.length
+          ? (alert(this.state.errors.map(msg => msg)))
+          : null}
       </div>
     )
   }
